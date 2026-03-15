@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>军事安全科普 - 守护国家安全的核心防线</title>
+    <!-- 引入Chart.js用于数据可视化 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4fc3f7;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.9)), 
+                        url('https://picsum.photos/id/1018/1920/600') center/cover no-repeat;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            background-color: #0288d1;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #0277bd;
+        }
+
+        /* 核心内容区 */
+        .content {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #0288d1;
+            margin: 1rem auto 0;
+        }
+
+        /* 安全维度模块 - 翻转卡片 */
+        .security-dimensions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 280px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flip-card-front {
+            background-color: white;
+            color: #333;
+        }
+
+        .flip-card-front i {
+            font-size: 2.5rem;
+            color: #0288d1;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-front h3 {
+            font-size: 1.5rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-back {
+            background-color: #1a365d;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-back p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .flip-card-back .source-tag {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            margin-top: 1rem;
+        }
+
+        /* ===== 新增：国际形势模块 ===== */
+        .global-trends {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 25px rgba(0,20,40,0.08);
+            border: 1px solid #e9ecf0;
+        }
+
+        .trends-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #1a365d20;
+            padding-bottom: 1rem;
+        }
+
+        .trends-header i {
+            font-size: 2.4rem;
+            color: #1a365d;
+            background: #eef3fc;
+            padding: 0.8rem;
+            border-radius: 50%;
+        }
+
+        .trends-header h3 {
+            font-size: 1.9rem;
+            color: #1a365d;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .trend-card {
+            background: #f9fcff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            transition: transform 0.25s ease;
+            border-left: 5px solid #0288d1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .trend-card:hover {
+            transform: translateY(-4px);
+            background: #ffffff;
+            box-shadow: 0 15px 25px -8px rgba(2,136,209,0.15);
+        }
+
+        .trend-card h4 {
+            font-size: 1.5rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px dashed #bdd3f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .trend-card h4 i {
+            color: #0288d1;
+            font-size: 1.4rem;
+        }
+
+        .trend-card p {
+            color: #2c3e50;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .trend-card .highlight {
+            background: #e1f0fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #0b4b7a;
+        }
+
+        .trend-footer {
+            margin-top: 1.5rem;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #4a6f8f;
+            border-top: 1px solid #d0e2f2;
+            padding-top: 0.8rem;
+        }
+
+        .trend-footer i {
+            color: #a94442;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 900px) {
+            .trends-grid { grid-template-columns: 1fr; }
+        }
+
+        /* 数据可视化模块 */
+        .data-visualization {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 4rem;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart-box {
+            height: 300px;
+            position: relative;
+        }
+
+        /* 数据卡片互动 */
+        .data-source-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .data-card {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid #0288d1;
+        }
+
+        .data-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .data-card h4 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .data-card .stat {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0288d1;
+            margin: 0.5rem 0;
+        }
+
+        .data-card .detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .data-card.active .detail {
+            max-height: 100px;
+            margin-top: 1rem;
+        }
+
+        /* 科普知识点模块 */
+        .knowledge-points {
+            margin-bottom: 4rem;
+        }
+
+        .point-item {
+            background-color: white;
+            border-left: 5px solid #0288d1;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .point-item h4 {
+            font-size: 1.3rem;
+            color: #1a365d;
+            margin-bottom: 0.8rem;
+        }
+
+        .source-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #666;
+            background-color: #f0f7ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+        }
+
+        /* 知识点小测验 */
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-option {
+            background-color: #f0f7ff;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: #e1f0fa;
+        }
+
+        .quiz-option.selected {
+            border-color: #0288d1;
+            background-color: #e3f2fd;
+        }
+
+        .quiz-option.correct {
+            border-color: #2e7d32;
+            background-color: #e8f5e9;
+        }
+
+        .quiz-option.wrong {
+            border-color: #d32f2f;
+            background-color: #ffebee;
+        }
+
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback.correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .quiz-feedback.wrong {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .quiz-btn {
+            background-color: #0288d1;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-btn:hover {
+            background-color: #0277bd;
+        }
+
+        /* 常见误区模块 */
+        .misunderstandings {
+            background-color: #f8fbff;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 4rem;
+        }
+
+        .misunderstanding-item {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .misunderstanding-question {
+            background-color: white;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #d32f2f;
+            transition: background-color 0.3s;
+        }
+
+        .misunderstanding-question:hover {
+            background-color: #fff5f5;
+        }
+
+        .misunderstanding-question h4 {
+            color: #d32f2f;
+            font-size: 1.2rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #d32f2f;
+            transition: transform 0.3s;
+        }
+
+        .misunderstanding-answer {
+            background-color: white;
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
+            border-top: 1px solid transparent;
+        }
+
+        .misunderstanding-answer.active {
+            padding: 1.5rem 2rem;
+            max-height: 200px;
+            border-top-color: #e0e0e0;
+        }
+
+        .misunderstanding-answer p {
+            margin: 0;
+        }
+
+        .correct-info {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        /* 法律基石模块 */
+        .legal-foundation {
+            background-color: #eef3fb;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 4rem;
+            border-left: 8px solid #1a365d;
+        }
+
+        .legal-article {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            border: 1px solid #d4e0f0;
+            transition: all 0.3s;
+        }
+
+        .legal-article:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .legal-article p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-article .source-tag {
+            background-color: #1a365d;
+            color: white;
+            font-weight: 400;
+            border: none;
+        }
+
+        .keyword {
+            background-color: #fff3cd;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            cursor: help;
+            border-bottom: 1px dashed #ffc107;
+            transition: background-color 0.3s;
+        }
+
+        .keyword:hover {
+            background-color: #ffe69c;
+        }
+
+        /* 底部信息 */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: #4fc3f7;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #4fc3f7;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .data-visualization, .misunderstandings, .legal-foundation {
+                padding: 2rem 1rem;
+            }
+            .chart-container {
+                grid-template-columns: 1fr;
+            }
+            .chart-box {
+                height: 250px;
+            }
+            .flip-card {
+                height: 320px;
+            }
+        }
+
+/* 情景选项样式 */
+.scenario-option {
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.scenario-option:hover {
+    border-color: #0288d1;
+    background-color: #f5f9ff;
+}
+/* 选中/对错样式 */
+.scenario-option.selected {
+    border-color: #0288d1;
+    background-color: #e8f5e9;
+}
+.scenario-option.correct {
+    border-color: #2e7d32;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+.scenario-option.wrong {
+    border-color: #d32f2f;
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+/* 按钮样式（复用quiz-btn，若无则补充） */
+.quiz-btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #0288d1;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.quiz-btn:hover {
+    background-color: #0277bd;
+}
+.quiz-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+</style>
+
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>军事安全科普</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#overview">安全概述</a></li>
+        	    <li><a href="#global">国际形势</a></li>
+                    <li><a href="#data">数据洞察</a></li>
+                    <li><a href="#knowledge">白皮书要点</a></li>
+                    <li><a href="#misunderstandings">常见误区</a></li>
+                    <li><a href="#legal">法律基石</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="container">
+            <h1>军事安全：国家安全的核心屏障</h1>
+            <p>军事安全是国家主权、领土完整和发展利益的根本保障，了解军事安全知识，是每个公民的责任与义务</p>
+            <a href="#knowledge" class="btn">查看白皮书要点</a>
+        </div>
+    </section>
+
+    <!-- 核心内容区 -->
+    <section class="content">
+        <div class="container">
+            <!-- 安全概述 -->
+            <div id="overview" class="overview">
+                <h2 class="section-title">军事安全核心概述</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; text-align: justify;">
+                    军事安全（military security）是指主权国家为保卫国家主权和领土完整，有效遏制、抵御外来武装侵略与颠覆所进行的必要军事防御准备。其核心内容包括国防力量建设、军队建设与使命履行、外交与情报协同等基本维度，涉及军队安全、军备安全、军事信息安全等具体领域。军事安全是国家安全体系的核心组成部分，指国家免受外部军事威胁、侵略和内部军事动荡的状态，以及保障这种状态的能力。其核心目标是维护国家主权、领土完整、海洋权益和发展利益，为国家经济社会发展提供稳定的安全环境。
+                </p>
+            </div>
+
+            <!-- 安全维度 - 改为翻转卡片 -->
+            <div id="dimensions" class="security-dimensions">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-landmark"></i>
+                            <h3>领土领空安全</h3>
+                            <p>点击翻转查看详情</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>保障国家陆地领土、领空不受非法侵犯，防范边境冲突、空中入侵等安全威胁，是军事安全的基础维度。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-water"></i>
+                            <h3>海洋安全</h3>
+                            <p>点击翻转查看详情</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>维护领海、专属经济区、岛礁主权和海洋通道安全，防范海上军事挑衅、资源掠夺等行为。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-satellite"></i>
+                            <h3>太空网络安全</h3>
+                            <p>点击翻转查看详情</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>保护太空资产、网络基础设施安全，防范太空军事对抗、网络攻击等新型安全威胁。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-shield-virus"></i>
+                            <h3>非传统安全</h3>
+                            <p>点击翻转查看详情</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>应对恐怖主义、海盗、武器扩散等非传统军事威胁，开展国际反恐合作、海上护航等行动。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="global-trends" id="global">
+                <div class="trends-header">
+                    <i class="fas fa-globe-asia"></i>
+                    <h3>2025国际军事安全形势 · 在激烈竞争中深刻调整</h3>
+                </div>
+                <div class="trends-grid">
+                    <!-- 格局转型 · 多极趋势 -->
+                    <div class="trend-card">
+                        <h4><i class="fas fa-dice-d6"></i> 格局转型 · 多极趋势</h4>
+                        <p>从“单极主导”向“多极并存”转型，<span class="highlight">多极化趋势加速</span>。美国战略调整聚焦“区域干预”，受债务拖累主导模式难以为继；欧洲推进防务自主但仍依赖美国；俄罗斯维持战略威慑；巴西等新兴市场话语权增强，全球权力结构加速多极化。</p>
+                        <div class="trend-footer"><i class="far fa-newspaper"></i> 诸强并立 · 架构重塑</div>
+                    </div>
+                    <!-- 地区冲突联动 · 安全紧张 -->
+                    <div class="trend-card">
+                        <h4><i class="fas fa-fire"></i> 地区冲突联动 · 多点爆发</h4>
+                        <p><span class="highlight">俄乌陷入僵持</span>，第4年消耗战；<span class="highlight">中东极度动荡</span>，巴以冲突、伊以对抗、也门内战交织，以色列“崛起雄狮”重创伊朗核设施；<span class="highlight">亚太升温</span>，印巴/泰柬冲突、南海军事活动增加，日本涉台言论暴露野心。冲突相互联动持续发酵。</p>
+                        <div class="trend-footer"><i class="far fa-calendar-alt"></i> 2025多点共振</div>
+                    </div>
+                    <!-- 国防投入增加 · 竞争纵深 -->
+                    <div class="trend-card">
+                        <h4><i class="fas fa-microchip"></i> 国防投入 · 技术竞赛</h4>
+                        <p>全球军费连续10年增长，2024年破<span class="highlight">2.7万亿美元</span>。重点投向<span class="highlight">AI、高超音速、太空作战</span>。无人作战迅猛崛起，俄乌频繁使用百架无人机集群突袭；高超音速武器进入实战部署；定向能武器规模化，太空军事化加速。新兴技术重塑战场格局。</p>
+                        <div class="trend-footer"><i class="fas fa-chart-line"></i> 跨域作战成焦点</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem; font-size: 0.9rem; color: #3d5a73; background: #ecf3fa; padding: 0.5rem 1rem; border-radius: 40px; display: inline-block;">
+                    <i class="fas fa-quote-left" style="margin-right: 6px; color:#1a365d;"></i>来源：中国军网-解放军报（严正峰）
+                </div>
+            </div>
+
+            <!-- 数据可视化 - 增加互动卡片 -->
+            <div id="data" class="data-visualization">
+                <h2 class="section-title">军事安全数据洞察</h2>
+                <div class="chart-container">
+                    <div class="chart-box">
+                        <canvas id="militaryExpenseChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="defenseBudgetChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="chinaExpenditureChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="gdpShareChart"></canvas>
+                    </div>
+                </div>
+<p class="source-tag" style="margin-top: 1rem;">数据来源：斯德哥尔摩国际和平研究所（SIPRI）1949-2024年军费报告</p>
+</div>
+
+            <!-- 白皮书要点板块 - 增加小测验 -->
+            <div id="knowledge" class="knowledge-points">
+                <h2 class="section-title">《新时代的中国国家安全》白皮书（2025年5月）</h2>
+                
+                <div class="point-item">
+                    <h4>总体国家安全观核心内涵</h4>
+                    <p>总体国家安全观强调，坚持以人民安全为宗旨、以政治安全为根本、以经济安全为基础、以军事科技文化社会安全为保障、以促进国际安全为依托，统筹发展和安全，统筹外部安全和内部安全、国土安全和国民安全、传统安全和非传统安全、自身安全和共同安全，统筹维护和塑造国家安全，以新安全格局保障新发展格局。</p>
+                    <p class="source-tag">来源：《新时代的中国国家安全》白皮书（2025年5月）</p>
+                </div>
+
+                <div class="point-item">
+                    <h4>筑牢军事国防屏障</h4>
+                    <p>深入贯彻军委主席负责制，完善人民军队领导管理体制机制。持续深化联合作战体系改革，统筹推进传统安全领域和新型安全领域军事力量建设和军事斗争准备。深化跨军地改革，优化国防科技工业布局，建设先进国防科技工业体系，巩固提高一体化国家战略体系和能力。</p>
+                    <p class="source-tag">来源：《新时代的中国国家安全》白皮书（2025年5月）</p>
+                </div>
+
+                <!-- 替换原有quiz-container的全部内容：多题版军事安全小测验 -->
+<div class="quiz-container">
+    <h3 style="color: #1a365d; margin-bottom: 1.5rem;">📝 军事安全知识点小测验（共5题）</h3>
+    <!-- 题序与进度 -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.9rem; color: #666;">
+        <span>当前：<span id="quizCurrent">1</span>/5 题</span>
+        <span>得分：<span id="quizScore">0</span>/5</span>
+    </div>
+    <!-- 题目容器 -->
+    <div class="quiz-question" id="quizQuestion"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <!-- 反馈提示 -->
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <!-- 操作按钮 -->
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <button class="quiz-btn" id="prevBtn" onclick="switchQuiz(-1)" style="flex: 1; display: none;">上一题</button>
+        <button class="quiz-btn" id="nextBtn" onclick="switchQuiz(1)" style="flex: 2;">下一题</button>
+        <button class="quiz-btn" id="submitBtn" onclick="submitAllQuiz()" style="flex: 2; display: none; background-color: #2e7d32;">提交所有答案</button>
+    </div>
+</div>
+
+
+            <!-- 常见误区 - 6道题目 -->
+            <div id="misunderstandings" class="misunderstandings">
+                <h2 class="section-title">军事安全常见认知误区</h2>
+                
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 和平时期不需要重视军事安全</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>和平是相对的，安全威胁是复杂多变的。即使在和平时期，也必须保持高度的军事安全警惕，加强国防和军队建设，才能有效防范各类安全风险，维护和平稳定的发展环境。</p>
+                    </div>
+                </div>
+
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 军事安全只是军队的责任</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>军事安全是全民共同的责任，每个公民都有维护国家军事安全的义务。从保守国家军事机密，到参与国防教育，再到支持国防建设，都是公民维护军事安全的具体体现。</p>
+                    </div>
+                </div>
+
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 国防预算越高越安全</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>军事安全的核心是"质"而非"量"。合理的国防预算应与国家经济实力、安全需求相匹配，重点提升国防和军队现代化建设的质量和效益，而非单纯追求预算规模。</p>
+                    </div>
+                </div>
+
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 我国奉行防御性国防政策</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>正确。中国奉行积极防御的军事战略方针，坚持防御性国防政策，永不称霸、永不扩张、永不谋求势力范围。国防政策的核心是维护国家主权、安全、发展利益。</p>
+                    </div>
+                </div>
+
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 军费增长必然导致地区军备竞赛</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>这是误解。军费增长如果是基于国家安全需要和经济发展水平，并保持透明适度，不会必然导致军备竞赛。中国军费增长主要用于更新装备、改善官兵待遇、加强训练等，是维护国家主权和安全的需要，不对任何国家构成威胁。</p>
+                    </div>
+                </div>
+
+                <div class="misunderstanding-item">
+                    <div class="misunderstanding-question" onclick="toggleAnswer(this)">
+                        <h4><i class="fas fa-question-circle"></i> 军事安全包括太空和网络安全领域</h4>
+                        <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="misunderstanding-answer">
+                        <p><span class="correct-info">解析：</span>正确。现代军事安全已经拓展到太空、网络等新型安全领域。保护太空资产、网络基础设施安全，防范太空军事对抗、网络攻击等新型安全威胁，是军事安全的重要组成部分。</p>
+                    </div>
+                </div>
+            </div>
+<!-- 公民军事安全义务 - 情景选择板块 -->
+<div id="duty-scenario" style="margin-bottom: 4rem;">
+    <h2 class="section-title">🧩 军事安全情景小测试</h2>
+    <div style="background-color: white; padding: 3rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+        <!-- 进度提示 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; font-size: 0.9rem; color: #666;">
+            <span>当前场景：<span id="scenarioCurrent">1</span>/6</span>
+            <span>正确率：<span id="scenarioScore">0</span>/6</span>
+        </div>
+        
+        <!-- 情景题目容器 -->
+        <div id="scenarioQuestion" style="font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; line-height: 1.6;"></div>
+        
+        <!-- 选项容器 -->
+        <div id="scenarioOptions" style="display: grid; gap: 0.8rem; margin-bottom: 1.5rem;"></div>
+        
+        <!-- 反馈提示 -->
+        <div id="scenarioFeedback" style="padding: 1rem; border-radius: 6px; display: none; margin-bottom: 1.5rem; line-height: 1.7;"></div>
+        
+        <!-- 操作按钮 -->
+        <div style="display: flex; gap: 1rem;">
+            <button class="quiz-btn" id="prevScenario" onclick="switchScenario(-1)" style="flex: 1; display: none;">上一场景</button>
+            <button class="quiz-btn" id="nextScenario" onclick="switchScenario(1)" style="flex: 2; display: none;">下一场景</button>
+            <button class="quiz-btn" id="finishScenario" onclick="finishScenario()" style="flex: 2; display: none; background-color: #2e7d32;">完成测试</button>
+        </div>
+    </div>
+</div>
+
+
+            <!-- 法律基石模块 - 增加关键词高亮 -->
+            <div id="legal" class="legal-foundation">
+                <h2 class="section-title">军事安全法律基石</h2>
+                <!-- 第十八条 -->
+                <div class="legal-article">
+                    <p><strong>第十八条</strong> 国家加强武装力量<span class="keyword" title="军队的革命化、现代化、正规化建设">革命化、现代化、正规化</span>建设，建设与保卫国家安全和发展利益需要相适应的武装力量；实施<span class="keyword" title="防御性的军事战略方针">积极防御</span>军事战略方针，防备和抵御侵略，制止武装颠覆和分裂；开展国际军事安全合作，实施联合国维和、国际救援、海上护航和维护国家海外利益的军事行动，维护国家<span class="keyword" title="主权、安全、领土完整、发展利益">主权、安全、领土完整、发展利益</span>和世界和平。</p>
+                    <p class="source-tag">来源：中华人民共和国国家安全法</p>
+                </div>
+                <!-- 第三十八条 -->
+                <div class="legal-article">
+                    <p><strong>第三十八条</strong> <span class="keyword" title="中央军事委员会是最高军事领导机关">中央军事委员会</span>领导全国武装力量，决定军事战略和武装力量的作战方针，统一指挥维护国家安全的军事行动，制定涉及国家安全的军事法规，发布有关决定和命令。</p>
+                    <p class="source-tag">来源：中华人民共和国国家安全法</p>
+                </div>
+                <p style="font-style: italic; color: #2c3e50; margin-top: 0.5rem;">—— 国家安全，法治为基；军事防线，全民共筑 ——</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部信息 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于本页面</h3>
+                    <p>本页面为军事安全科普公益内容，旨在提升全民军事安全意识，所有信息均来自官方权威发布。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>权威信息来源</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="http://www.mod.gov.cn/" target="_blank">国防部官网</a></li>
+                        <li><a href="http://www.sipri.org/" target="_blank">斯德哥尔摩国际和平研究所</a></li>
+ 			<li><a href="http://www.npc.gov.cn/" target="_blank">中国人大网</a></li>
+			<li><a href="http://www.81.cn/" target="_blank">中国军网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 本页面仅作科普使用，不代表任何官方立场
+            </div>
+        </div>
+    </footer>
+
+    <!-- 数据可视化脚本-->
+    <script>
+        (function() {
+            const expenseCtx = document.getElementById('militaryExpenseChart').getContext('2d');
+            new Chart(expenseCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['美国', '英国', '法国', '俄罗斯', '中国'],
+                    datasets: [{
+                        label: '2024年军费占 GDP 比例',
+                        data: [3.42, 2.28, 2.05, 7.05, 1.71],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '五大常任理事国2024年军费占 GDP 比例',
+                            font: { size: 14 }
+                        },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: '占比 (%)' } }
+                    }
+                }
+            });
+
+            const budgetCtx = document.getElementById('defenseBudgetChart').getContext('2d');
+            new Chart(budgetCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                    datasets: [{
+                        label: '中国军费占政府支出比例 (%)',
+                        data: [4.91, 4.90, 4.93, 4.88, 5.03, 5.06],
+                        fill: false,
+                        borderColor: 'rgba(2, 136, 209, 1)',
+                        tension: 0.1,
+                        pointBackgroundColor: 'rgba(2, 136, 209, 1)'
+                    }, {
+                        label: '全球平均水平 (%)',
+                        data: [6.49, 6.22, 6.5, 6.65, 6.99, 7.25],
+                        fill: false,
+                        borderColor: 'rgba(211, 47, 47, 1)',
+                        tension: 0.1,
+                        pointBackgroundColor: 'rgba(211, 47, 47, 1)',
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '2019-2024中国军费占政府支出比例',
+                            font: { size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: '占比 (%)' } }
+                    }
+                }
+            });
+
+            const rawExpenditure = [
+                4.23625e10, 4.74798e10, 5.21819e10, 6.75221e10, 7.12191e10, 8.50421e10, 1.03433e11, 1.18688e11, 1.30147e11, 1.41005e11,
+                1.69488e11, 1.8409e11, 2.19851e11, 2.50661e11, 2.74334e11, 3.13729e11, 3.50635e11, 4.1026e11, 4.72706e11, 5.47837e11,
+                6.59927e11, 7.14417e11, 8.09533e11, 9.16093e11, 1.01654e12, 1.11878e12, 1.22394e12, 1.32029e12, 1.42382e12, 1.53849e12,
+                1.66022e12, 1.78053e12, 1.84482e12, 1.96434e12, 2.09868e12, 2.2548e12
+            ];
+            const expenditureBillions = rawExpenditure.map(val => Number((val / 1e9).toFixed(2)));
+
+            const years = [];
+            for (let y = 1989; y <= 2024; y++) years.push(y.toString());
+
+            const chinaExpCtx = document.getElementById('chinaExpenditureChart').getContext('2d');
+            new Chart(chinaExpCtx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: '中国军费支出 (十亿人民币)',
+                        data: expenditureBillions,
+                        borderColor: 'rgba(46, 125, 50, 1)',
+                        backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                        fill: false,
+                        tension: 0.1,
+                        pointRadius: 1.5,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '中国军费支出绝对额 (1989-2024)',
+                            font: { size: 14 }
+                        },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: { 
+                            title: { display: true, text: '金额 (十亿人民币)' },
+                            ticks: { callback: (val) => val + ' 十亿' }
+                        },
+                        x: { 
+                            title: { display: true, text: '年份' },
+                            ticks: { maxTicksLimit: 12 }
+                        }
+                    }
+                }
+            });
+
+
+            const gdpShareRaw = [
+                0.0244710131532583, 0.0245401611552735, 0.0231124, 0.0244954, 0.0192807, 0.0169348, 0.0168623, 0.0165273, 0.0163265, 0.0165508,
+                0.0187147, 0.0183576, 0.0198309, 0.0205936, 0.0199629, 0.0193851, 0.0187186, 0.0186959, 0.0175016, 0.0171604,
+                0.0189352, 0.0173352, 0.0165908, 0.0170094, 0.0171434, 0.0173841, 0.0177677, 0.0176889, 0.0171124, 0.0167358,
+                0.0168291, 0.017567, 0.0160526, 0.0163053, 0.0166485, 0.017113
+            ];
+
+            const gdpSharePercent = gdpShareRaw.map(val => Number((val * 100).toFixed(2)));
+
+            const gdpCtx = document.getElementById('gdpShareChart').getContext('2d');
+            new Chart(gdpCtx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [{
+                        label: '中国军费占GDP比例 (%)',
+                        data: gdpSharePercent,
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        backgroundColor: 'rgba(153, 102, 255, 0.1)',
+                        fill: false,
+                        tension: 0.1,
+                        pointRadius: 1.5,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '中国军费占GDP比例 (1989-2024)',
+                            font: { size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            title: { display: true, text: '占比 (%)' },
+                            min: 1.0,
+                            max: 2.6
+                        },
+                        x: { 
+                            title: { display: true, text: '年份' },
+                            ticks: { maxTicksLimit: 12 }
+                        }
+                    }
+                }
+            });
+
+        })();
+
+        function toggleAnswer(element) {
+            const answerDiv = element.nextElementSibling;
+            answerDiv.classList.toggle('active');
+            
+            const icon = element.querySelector('.toggle-icon i');
+            if (icon) {
+                if (answerDiv.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+// ========== 多题版：军事安全小测验核心交互（优化选中不提前标色） ==========
+// 1. 定义n道军事安全相关考题（题干+选项+正确答案+解析）
+const quizQuestions = [
+    {
+        question: "总体国家安全观的根本是什么？",
+        options: [
+            { text: "A. 人民安全", type: "wrong" },
+            { text: "B. 政治安全", type: "correct" },
+            { text: "C. 经济安全", type: "wrong" },
+            { text: "D. 军事安全", type: "wrong" }
+        ],
+        answer: "B",
+        analysis: "总体国家安全观以人民安全为宗旨，以政治安全为根本，以经济安全为基础，以军事科技文化社会安全为保障。"
+    },
+    {
+        question: "《国家安全法》中规定，我国实施的军事战略方针是？",
+        options: [
+            { text: "A. 主动出击", type: "wrong" },
+            { text: "B. 积极防御", type: "correct" },
+            { text: "C. 战略威慑", type: "wrong" },
+            { text: "D. 守势防御", type: "wrong" }
+        ],
+        answer: "B",
+        analysis: "《国家安全法》第十八条明确规定，我国实施积极防御军事战略方针，防备和抵御侵略，制止武装颠覆和分裂。"
+    },
+    {
+        question: "以下哪项不属于现代军事安全的新型领域？",
+        options: [
+            { text: "A. 领土安全", type: "correct" },
+            { text: "B. 太空安全", type: "wrong" },
+            { text: "C. 网络安全", type: "wrong" },
+            { text: "D. 深海安全", type: "wrong" }
+        ],
+        answer: "A",
+        analysis: "领土安全是传统军事安全的基础维度，太空、网络、深海、极地是现代军事安全拓展的新型领域。"
+    },
+    {
+        question: "我国军费占GDP的比重长最靠近哪个数字？",
+        options: [
+            { text: "A. 2%", type: "correct" },
+            { text: "B. 5%", type: "wrong" },
+            { text: "C. 9%", type: "wrong" },
+            { text: "D. 7%", type: "wrong" }
+        ],
+        answer: "A",
+        analysis: "1989年至2024年以来，我国军费占GDP的比重在1.5%-2.5%的水平。"
+    },
+    {
+        question: "维护国家军事安全的责任主体是？",
+        options: [
+            { text: "A. 中国人民解放军", type: "wrong" },
+            { text: "B. 全军和武警部队", type: "wrong" },
+            { text: "C. 全体公民", type: "correct" },
+            { text: "D. 国家国防部门", type: "wrong" }
+        ],
+        answer: "C",
+        analysis: "军事安全是全民共同的责任，每个公民都有维护国家军事安全的义务，包括保守军事机密、参与国防教育、支持国防建设等。"
+    }
+];
+
+// 2. 初始化测验状态
+let currentQ = 0; // 当前题序
+let score = 0; // 得分
+let userAnswers = new Array(quizQuestions.length).fill(null); // 存储用户答案（索引）
+let userAnswerTypes = new Array(quizQuestions.length).fill(null); // 存储答案类型（correct/wrong）
+let isAnswered = new Array(quizQuestions.length).fill(false); // 标记是否作答
+
+// 3. 初始化加载第一题
+renderQuiz();
+function renderQuiz() {
+    const q = quizQuestions[currentQ];
+    const questionEl = document.getElementById('quizQuestion');
+    const optionsEl = document.getElementById('quizOptions');
+    const feedbackEl = document.getElementById('quizFeedback');
+    const currentEl = document.getElementById('quizCurrent');
+    const scoreEl = document.getElementById('quizScore');
+
+    // 重置内容
+    questionEl.innerText = q.question;
+    optionsEl.innerHTML = '';
+    feedbackEl.className = 'quiz-feedback';
+    feedbackEl.innerText = '';
+    currentEl.innerText = currentQ + 1;
+    scoreEl.innerText = score;
+
+    // 渲染选项（仅显示选中状态，不标对错色）
+    q.options.forEach((opt, idx) => {
+        const optionEl = document.createElement('div');
+        optionEl.className = 'quiz-option';
+        optionEl.innerText = opt.text;
+        optionEl.onclick = () => selectOption(optionEl, opt.type, idx);
+        
+        // 已作答的选项，仅显示选中边框，不标绿/红
+        if (userAnswers[currentQ] === idx) {
+            optionEl.classList.add('selected');
+        }
+        
+        optionsEl.appendChild(optionEl);
+    });
+
+    // 控制按钮显示
+    document.getElementById('prevBtn').style.display = currentQ > 0 ? 'block' : 'none';
+    document.getElementById('nextBtn').style.display = currentQ < quizQuestions.length - 1 && isAnswered[currentQ] ? 'block' : 'none';
+    document.getElementById('submitBtn').style.display = currentQ === quizQuestions.length - 1 && isAnswered.every(v => v) ? 'block' : 'none';
+}
+
+// 4. 选中选项函数（仅标记选中，不提示对错）
+function selectOption(optionEl, type, idx) {
+    const allOptions = document.querySelectorAll('.quiz-option');
+    // 清除所有选项的选中状态和对错标色
+    allOptions.forEach(opt => opt.classList.remove('selected', 'correct', 'wrong'));
+    // 仅添加选中状态（蓝色边框）
+    optionEl.classList.add('selected');
+    
+    // 记录答案信息
+    userAnswers[currentQ] = idx;
+    userAnswerTypes[currentQ] = type;
+    isAnswered[currentQ] = true;
+    
+    // 不显示解析，仅更新按钮状态
+    renderQuiz();
+}
+
+// 5. 切换题序函数（切换时显示上一题的对错解析）
+function switchQuiz(direction) {
+    const prevQ = currentQ;
+    const newQ = currentQ + direction;
+    
+    if (newQ >= 0 && newQ < quizQuestions.length) {
+        // 显示上一题的对错解析（在切换前）
+        showPrevQFeedback(prevQ);
+        
+        // 切换到新题目
+        currentQ = newQ;
+        setTimeout(() => {
+            renderQuiz();
+        }, 1000); // 延迟渲染，让解析有展示时间
+    }
+}
+
+// 6. 显示上一题的对错反馈
+function showPrevQFeedback(qIdx) {
+    const feedbackEl = document.getElementById('quizFeedback');
+    const q = quizQuestions[qIdx];
+    const answerType = userAnswerTypes[qIdx];
+    
+    if (answerType === 'correct' && !userAnswers[qIdx + '_scored']) {
+        score++;
+        userAnswers[qIdx + '_scored'] = true;
+        feedbackEl.className = 'quiz-feedback show correct';
+        feedbackEl.innerText = `回答正确！${q.analysis}`;
+    } else if (answerType === 'wrong') {
+        feedbackEl.className = 'quiz-feedback show wrong';
+        feedbackEl.innerText = `回答错误！正确答案是${q.answer}。${q.analysis}`;
+    }
+    
+    // 更新得分显示
+    document.getElementById('quizScore').innerText = score;
+}
+
+// 7. 提交所有答案函数（显示全部对错和最终得分）
+function submitAllQuiz() {
+    const feedbackEl = document.getElementById('quizFeedback');
+    const optionsEl = document.getElementById('quizOptions');
+    const q = quizQuestions[currentQ];
+    
+    // 关键修复：统计最后一题（当前题）的得分（之前漏了这步）
+    if (userAnswerTypes[currentQ] === 'correct' && !userAnswers[currentQ + '_scored']) {
+        score++;
+        userAnswers[currentQ + '_scored'] = true;
+        document.getElementById('quizScore').innerText = score; // 更新得分显示
+    }
+    
+    // 显示当前题的对错
+    optionsEl.querySelectorAll('.quiz-option').forEach((opt, idx) => {
+        if (quizQuestions[currentQ].options[idx].type === 'correct') {
+            opt.classList.add('correct');
+        } else if (idx === userAnswers[currentQ]) {
+            opt.classList.add('wrong');
+        }
+    });
+    
+    // 显示最终反馈
+    const wrongCount = quizQuestions.length - score;
+    feedbackEl.className = 'quiz-feedback show ' + (wrongCount === 0 ? 'correct' : 'wrong');
+    if (wrongCount === 0) {
+        feedbackEl.innerText = `恭喜！你答对了所有题，完全掌握军事安全核心知识点！最终得分：${score}/5`;
+    } else {
+        feedbackEl.innerText = `作答完成！你的最终得分为${score}/5，共有${wrongCount}道题答错。建议回顾错题对应的科普知识点，加深理解～`;
+    }
+    
+    // 禁用所有选项和按钮
+    document.querySelectorAll('.quiz-option').forEach(opt => opt.style.pointerEvents = 'none');
+    document.getElementById('prevBtn').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('submitBtn').style.display = 'none';
+}
+    </script>
+<!-- 配套JS（添加到页面<script>标签中） -->
+<script>
+// 1. 定义6个军事安全情景题
+const scenarioQuestions = [
+    {
+        question: "你在海边散步，看到有人用无人机拍摄附近的军事港口，你应该？",
+        options: [
+            { text: "A. 不管不问，继续散步", type: "wrong" },
+            { text: "B. 上前制止，并拨打12339国家安全举报电话", type: "correct" },
+            { text: "C. 好奇围观，甚至帮忙拍摄", type: "wrong" }
+        ],
+        analysis: "该行为对应「保守军事机密」义务，《保守国家秘密法》规定：公民有义务制止、举报泄露军事机密的行为，12339是国家安全机关官方举报电话。"
+    },
+    {
+        question: "你的朋友在朋友圈发布了军营内部训练的照片，你应该？",
+        options: [
+            { text: "A. 点赞评论，觉得很帅气", type: "wrong" },
+            { text: "B. 提醒他删除，并告知这属于涉密信息", type: "correct" },
+            { text: "C. 转发到自己的朋友圈", type: "wrong" }
+        ],
+        analysis: "军营内部场景属于军事机密范畴，随意拍摄传播违反《保守国家秘密法》，公民有义务提醒他人遵守保密规定。"
+    },
+    {
+        question: "社区组织国防教育讲座，你有时间的情况下会？",
+        options: [
+            { text: "A. 拒绝参加，觉得和自己无关", type: "wrong" },
+            { text: "B. 积极参加，学习国防安全知识", type: "correct" },
+            { text: "C. 让家人代替参加", type: "wrong" }
+        ],
+        analysis: "《国防教育法》规定公民有接受国防教育的义务，主动学习国防知识是履行军事安全义务的基础。"
+    },
+    {
+        question: "你发现有人在军事禁区附近摆摊，还试图翻越围栏，你应该？",
+        options: [
+            { text: "A. 拍照发短视频，博取关注", type: "wrong" },
+            { text: "B. 立即向附近的哨兵/武装部举报", type: "correct" },
+            { text: "C. 觉得有趣，上前围观", type: "wrong" }
+        ],
+        analysis: "军事禁区受《军事设施保护法》严格保护，公民有义务举报破坏、侵入军事禁区的行为，维护军事设施安全。"
+    },
+    {
+        question: "征兵宣传人员到社区开展征兵工作，你作为适龄青年应该？",
+        options: [
+            { text: "A. 刻意回避，不愿了解", type: "wrong" },
+            { text: "B. 主动咨询，符合条件则报名应征", type: "correct" },
+            { text: "C. 抱怨征兵影响自己的生活", type: "wrong" }
+        ],
+        analysis: "《国防法》《兵役法》规定，适龄公民有服兵役的义务，支持征兵工作是履行国防建设义务的核心体现。"
+    },
+    {
+        question: "你在网上看到有人散布「军队调动虚假信息」，你应该？",
+        options: [
+            { text: "A. 转发该信息，扩大传播范围", type: "wrong" },
+            { text: "B. 向平台举报，并提醒他人不信谣不传谣", type: "correct" },
+            { text: "C. 觉得好玩，评论调侃", type: "wrong" }
+        ],
+        analysis: "散布军队虚假信息会危害军事安全和社会稳定，公民有义务抵制谣言、维护军事信息的真实性。"
+    }
+];
+
+// 2. 初始化状态
+let currentScenario = 0;
+let scenarioScore = 0;
+let userScenarioAnswers = new Array(scenarioQuestions.length).fill(null);
+let isScenarioAnswered = new Array(scenarioQuestions.length).fill(false);
+
+// 3. 初始化加载第一个场景
+renderScenario();
+function renderScenario() {
+    const q = scenarioQuestions[currentScenario];
+    const questionEl = document.getElementById('scenarioQuestion');
+    const optionsEl = document.getElementById('scenarioOptions');
+    const feedbackEl = document.getElementById('scenarioFeedback');
+    const currentEl = document.getElementById('scenarioCurrent');
+    const scoreEl = document.getElementById('scenarioScore');
+
+    // 重置内容
+    questionEl.innerText = q.question;
+    optionsEl.innerHTML = '';
+    feedbackEl.style.display = 'none';
+    currentEl.innerText = currentScenario + 1;
+    scoreEl.innerText = scenarioScore;
+
+    // 渲染选项
+    q.options.forEach((opt, idx) => {
+        const optionEl = document.createElement('div');
+        optionEl.className = 'scenario-option';
+        optionEl.innerText = opt.text;
+        
+        // 已作答的选项，显示选中/对错状态
+        if (userScenarioAnswers[currentScenario] === idx) {
+            optionEl.classList.add(opt.type === 'correct' ? 'correct' : 'wrong');
+        }
+        
+        // 未作答时绑定点击事件
+        if (!isScenarioAnswered[currentScenario]) {
+            optionEl.onclick = () => selectScenarioOption(optionEl, opt.type, idx);
+        }
+        
+        optionsEl.appendChild(optionEl);
+    });
+
+    // 控制按钮显示
+    document.getElementById('prevScenario').style.display = currentScenario > 0 ? 'block' : 'none';
+    document.getElementById('nextScenario').style.display = currentScenario < scenarioQuestions.length - 1 && isScenarioAnswered[currentScenario] ? 'block' : 'none';
+    document.getElementById('finishScenario').style.display = currentScenario === scenarioQuestions.length - 1 && isScenarioAnswered.every(v => v) ? 'block' : 'none';
+}
+
+// 4. 选择情景选项（判断对错+显示解析）
+function selectScenarioOption(optionEl, type, idx) {
+    const allOptions = document.querySelectorAll('.scenario-option');
+    const feedbackEl = document.getElementById('scenarioFeedback');
+    
+    // 清除所有选项状态
+    allOptions.forEach(opt => opt.classList.remove('selected', 'correct', 'wrong'));
+    
+    // 标记选中/对错
+    optionEl.classList.add('selected');
+    if (type === 'correct') {
+        optionEl.classList.add('correct');
+        // 仅首次答对加分
+        if (!userScenarioAnswers[currentScenario]) {
+            scenarioScore++;
+        }
+        feedbackEl.style.display = 'block';
+        feedbackEl.style.backgroundColor = '#e8f5e9';
+        feedbackEl.style.color = '#2e7d32';
+        feedbackEl.innerHTML = `✅ 回答正确！<br>${scenarioQuestions[currentScenario].analysis}`;
+    } else {
+        optionEl.classList.add('wrong');
+        // 标绿正确答案
+        allOptions.forEach((opt, i) => {
+            if (scenarioQuestions[currentScenario].options[i].type === 'correct') {
+                opt.classList.add('correct');
+            }
+        });
+        feedbackEl.style.display = 'block';
+        feedbackEl.style.backgroundColor = '#ffebee';
+        feedbackEl.style.color = '#d32f2f';
+        feedbackEl.innerHTML = `❌ 回答错误！<br>${scenarioQuestions[currentScenario].analysis}`;
+    }
+    
+    // 记录答案
+    userScenarioAnswers[currentScenario] = idx;
+    isScenarioAnswered[currentScenario] = true;
+    
+    // 更新按钮状态
+    renderScenario();
+}
+
+// 5. 切换场景
+function switchScenario(direction) {
+    const newQ = currentScenario + direction;
+    if (newQ >= 0 && newQ < scenarioQuestions.length) {
+        currentScenario = newQ;
+        renderScenario();
+    }
+}
+
+// 6. 完成测试
+function finishScenario() {
+    const feedbackEl = document.getElementById('scenarioFeedback');
+    const wrongCount = scenarioQuestions.length - scenarioScore;
+    
+    // 最终反馈
+    feedbackEl.style.display = 'block';
+    if (wrongCount === 0) {
+        feedbackEl.style.backgroundColor = '#e8f5e9';
+        feedbackEl.style.color = '#2e7d32';
+        feedbackEl.innerHTML = `🎉 恭喜！你答对了所有6道情景题，完全掌握公民军事安全义务的实操要求！`;
+    } else {
+        feedbackEl.style.backgroundColor = '#fff8e1';
+        feedbackEl.style.color = '#f57c00';
+        feedbackEl.innerHTML = `📝 测试完成！你的正确率为${scenarioScore}/6，共有${wrongCount}道题答错。<br>建议回顾错题解析，牢记公民在军事安全中的核心义务，共同守护国家军事安全。`;
+    }
+    
+    // 禁用所有选项和按钮
+    document.querySelectorAll('.scenario-option').forEach(opt => opt.style.pointerEvents = 'none');
+    document.getElementById('prevScenario').style.display = 'none';
+    document.getElementById('nextScenario').style.display = 'none';
+    document.getElementById('finishScenario').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
