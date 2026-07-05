@@ -4,15 +4,17 @@ An interactive web-based science popularization platform designed to introduce t
 
 ## Preview
 
-## Preview
+### Home Page
 
-| Home Page |  |Data Visualization
-|------------|----------------|
-| ![](images/1.png) | ![](images/3.png) |
+![Home](images/1.png)
 
-### Knowledge Quiz
+### Interactive Knowledge Section
 
-![](images/2.png)
+![Knowledge](images/3.png)
+
+### Data Visualization Dashboard
+
+![Dashboard](images/2.png)
 
 ## Features
 
